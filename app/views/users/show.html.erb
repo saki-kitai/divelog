@@ -6,6 +6,19 @@
       </div>
       <div class="card-body">
           <img class="rounded-circle img-fluid" src= "<%=@user.profile_picture.thumb.url if @user.profile_picture? %>" alt="">
+          <div align="center">
+          <p>
+            Total: <%= "30" %> Dives</br>
+            Following: <%= "30" %></br>
+            Followers: <%= "30" %> </br>
+          </p>
+          </div>
+          <% if correct_user? %>
+            <div align="right">
+              <%= link_to 'Edit Profile', edit_user_path, class: 'btn btn-primary' %>
+            </div>
+          <% else %>
+          <% end %>
       </div>
     </div>
   </aside>

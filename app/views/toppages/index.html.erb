@@ -1,6 +1,15 @@
-<div class="center jumbotron">
-    <div class="text-center">
-        <h1>Welcome to Dive Log</h1>
-        <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
+<% if logged_in? %>
+    <p>ログイン中<</p>
+    <div class="center jumbotron">
+        <div class="text-center">
+            <h1>Welcome to Dive Log</h1>
+        </div>
     </div>
-</div>
+<% else %>    
+    <div class="center jumbotron">
+        <div class="text-center">
+            <h1>Welcome to Dive Log</h1>
+            <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
+        </div>
+    </div>
+<% end %>
