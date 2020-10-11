@@ -1,0 +1,21 @@
+<div class="row">
+  <aside class="col-sm-4">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title"><%= link_to "@#{@user.name}", user_path %></h3>
+      </div>
+      <div class="card-body">
+          <img class="rounded-circle img-fluid" src= "<%=@user.profile_picture.thumb.url if @user.profile_picture? %>" alt="">
+      </div>
+    </div>
+  </aside>
+  <div class="col-sm-8">
+    <ul class="nav nav-tabs nav-justified mb-3">
+      <li class="nav-item"><a href="#" class="nav-link">My Log</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Followings</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Followers</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Likes</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Map</a></li>
+    </ul>
+  </div>
+</div>
