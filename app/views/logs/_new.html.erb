@@ -1,0 +1,126 @@
+<%= form_with(model: @log, local: true) do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
+    
+    <div class="form-group">
+        <%= f.label :date, 'date' %>
+        <%= f.date_field :date, class: 'form-control' %>
+    </div>
+
+    <div>
+        <%= f.label :weather, 'Weather' %><br>
+        <%= f.radio_button :weather, :sunny%>
+        <%= f.label :weather, "Sunny", {value: :sunny, style: "display: inline-block;"} %>
+        <%= f.radio_button :weather, :cloudy %>
+        <%= f.label :weather, "Cloudy", {value: :cloudy, style: "display: inline-block;"} %>
+        <%= f.radio_button :weather, :rainy %>
+        <%= f.label :weather, "Rainy", {value: :rainy, style: "display: inline-block;"} %>
+    </div>
+    
+    <div class="form-group">
+        <%= f.label :wind, 'Wind' %>
+        <%= f.text_field :wind, class: 'form-control' %>
+    </div>
+    
+    <div class="form-group">
+        <%= f.label :temperature, 'Temperature' %>
+        <%= f.number_field :temperature, step: "0.1", class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :water_temperature, 'Water Temperature' %>
+        <%= f.number_field :water_temperature, step: "0.1", class: 'form-control' %>
+    </div>
+    
+    <div class="form-group">
+        <%= f.label :start_time, 'Start Time' %>
+        <%= f.time_field :start_time, class: 'form-control', id: 'start_time' %>
+    </div>
+    
+    <div class="form-group">
+        <%= f.label :end_time, 'End Time' %>
+        <%= f.time_field :end_time, class: 'form-control', id: "end_time" %>
+    </div>
+    
+    <div class="form-group">
+        <%= f.label :total_time, 'Total Time' %>
+        <%= f.time_field :total_time, class: 'form-control', id: "total_time" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :country, 'Country' %>
+        <%= f.text_field :country, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :area, 'Area' %>
+        <%= f.text_field :area, class: 'form-control' %>
+    </div>
+    
+    <div class="form-group">
+        <%= f.label :point, 'Point' %>
+        <%= f.text_field :point, class: 'form-control' %>
+    </div>
+    
+    <div class="form-group">
+        <%= f.label :entry_type, 'Entry Type' %>
+        <%= f.text_field :entry_type, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :weight, 'Weight' %>
+        <%= f.number_field :weight, step: "0.1", class: 'form-control' %>
+    </div>
+    
+    <div class="form-group">
+        <%= f.label :buddy, 'Buddy' %>
+        <%= f.text_field :buddy, class: 'form-control' %>
+    </div>
+    
+    <div class="form-group">
+        <%= f.label :visibility, 'Visibility' %>
+        <%= f.text_field :visibility, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :max_depth, 'Max Depth' %>
+        <%= f.number_field :max_depth, step: "0.1", class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :avg_depth, 'Avg. Depth' %>
+        <%= f.number_field :avg_depth, step: "0.1", class: 'form-control' %>
+    </div>
+    
+    <div class="form-group">
+        <%= f.label :start_bar, 'Start Bar' %>
+        <%= f.number_field :start_bar, id: "start_bar", class: 'form-control' %>
+    </div>
+    
+    <div class="form-group">
+        <%= f.label :end_bar, 'End Bar' %>
+        <%= f.number_field :end_bar, class: 'form-control', id: "end_bar" %>
+    </div>
+    
+    <div class="form-group">
+        <%= f.label :bar_used, 'Air Consumption' %>
+        <%= f.number_field :bar_used, class: 'form-control', id: "bar_used" %>
+    </div>
+    
+    <div class="form-group">
+        <%= f.label :image1, 'Image1' %>
+        <%= f.file_field :image1, class: 'form-control' %>
+    </div>
+    
+    <div class="form-group">
+        <%= f.label :image2, 'Image2' %>
+        <%= f.file_field :image2, class: 'form-control' %>
+    </div>
+    
+    <div class="form-group">
+        <%= f.label :comment, 'Comment' %>
+        <%= f.text_area :comment, class: 'form-control' %>
+    </div>
+    
+    <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
+
+<% end %>

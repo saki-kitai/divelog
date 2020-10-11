@@ -9,7 +9,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by(id: session[:user_id])
+    @logs = @user.logs.order(id: :desc).page(params[:page])
+    
   end 
 
   def new
@@ -46,6 +48,11 @@ class UsersController < ApplicationController
   end 
 
   def destroy
+  end
+  
+  def newlog
+    @user = current_user
+    @log = @user.logs.build
   end
   
   private

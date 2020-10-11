@@ -1,0 +1,16 @@
+<ul class="list-unstyled">
+  <% logs.each do |log| %>
+    <li class="media mb-3">
+      <img class="rounded-circle img-fluid" src= "<%= log.user.profile_picture.mini_thumb.url if log.user.profile_picture? %>" alt="">
+      <div class="media-body">
+        <div>
+          <%= link_to log.user.name, user_path(log.user) %> <span class="text-muted">posted at <%= log.created_at %></span>
+        </div>
+        <div>
+          <p><%= log.comment %></p>
+        </div>
+      </div>
+    </li>
+  <% end %>
+  <%= paginate logs %>
+</ul>

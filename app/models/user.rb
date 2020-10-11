@@ -9,7 +9,7 @@ class User < ApplicationRecord
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
     
-    # no validation for profile_picture for now
-    
     mount_uploader :profile_picture, ProfilePictureUploader
+    
+    has_many :logs
 end
