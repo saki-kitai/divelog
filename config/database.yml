@@ -48,7 +48,9 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: divelog_production
   username: divelog
   password: <%= ENV['DIVELOG_DATABASE_PASSWORD'] %>
