@@ -31,6 +31,10 @@ class LogsController < ApplicationController
   end
 
   def destroy
+    @log = current_user.logs.find_by(id: params[:id])
+    @log.destroy
+    flash[:success] = "Successfully deleted the log."
+    redirect_back(fallback_location: root_path)
   end
   
   private

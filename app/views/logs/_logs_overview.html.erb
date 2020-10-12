@@ -6,7 +6,7 @@
         <div class="col-3"  style="text-align:center">
             <div>
               <a href="<%= user_path(log.user) %>">
-              <img class="image-fluid align-center rounded-circle" src= "<%= log.user.profile_picture.mini_thumb.url if log.user.profile_picture? %>" alt="">
+              <img class="image-fluid align-center rounded-circle" style="border-style:solid; border-color:lightblue" src= "<%= log.user.profile_picture.mini_thumb.url if log.user.profile_picture? %>" alt="" border="1px">
               </a>
             </div>
             <div>
@@ -16,7 +16,7 @@
         
         <div class="col-9">
           
-            <div class="row">
+            <div class="row mb-1">
               <div class="col-sm-12">
                 <img class="image-fluid" src="<%= log.image1.thumb.url if log.image1? %>">
                 <img class="image-fluid" src="<%= log.image2.thumb.url if log.image2? %>">
@@ -25,19 +25,34 @@
             
             <div class="row">
               <div class="col-3">
-                <%= link_to 'show more', log_path(log) %><br>
-                <%= link_to 'Like', log_path(log) %>  
+                <%= link_to log_path(log), class: 'btn btn-outline-danger rounded-pill' do %>
+                  <i class="fas fa-heart"></i>
+                <% end %><br>
+                <%= link_to '>>show more', log_path(log), :style=>"color:grey;" %>
               </div>
               <div class="col-9">
                 <% unless log.comment.empty? %>
-                  <% comment = log.comment[0..20] %>
-                  <p><%= comment %>
-                  <br class="d-inline d-sm-none" /></p>
+                  <% comment = log.comment[0..90] %>
+                    <% if comment.length > 90 %>
+                      <p style="word-wrap:break-word"><%= comment %>...</p>
+                    <% else %>
+                      <p style="word-wrap:break-word"><%= comment %></p>
+                    <% end %>
                 <% end %>
               </div>
             </div>
             
+            <% if log.user == current_user %>
+              <div class="row" style="text-align:right">
+                <div class="col-sm-12">
+                <%= link_to 'Edit', edit_log_path(log) , class: 'btn btn-outline-secondary btn-sm'%>
+                <%= link_to "Delete", log, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-outline-danger btn-sm' %>
+                </div>
+              </div>
+            <% end %>
         </div><!-- col-9閉じる -->
+        
+        
     </div><!--rowを閉じる-->
     <hr>
   <% end %>
