@@ -6,7 +6,7 @@
       </div>
       <div class="card-body">
           <img class="rounded-circle img-fluid" src= "<%=@user.profile_picture.thumb.url if @user.profile_picture? %>" alt="">
-          <div align="center">
+          <div class="mt-2" align="center">
           <p>
             Total: <%= "30" %> Dives</br>
             Following: <%= "30" %></br>
@@ -24,8 +24,10 @@
   </aside>
   <div class="col-sm-8">
     <ul class="nav nav-tabs nav-justified mb-3">
-      <li class="nav-item"><a href="<%= user_path(@user.id) %>" class="nav-link">My Log</a></li>
-      <li class="nav-item"><a href="<%= newlog_user_path(@user.id) %>" class="nav-link">New Log</a></li>
+      <li class="nav-item"><a href="<%= user_path(@user.id) %>" class="nav-link">Log</a></li>
+      <% if correct_user? %>
+        <li class="nav-item"><a href="<%= newlog_user_path(@user.id) %>" class="nav-link">New Log</a></li>
+      <% end %>
       <li class="nav-item"><a href="#" class="nav-link">Followings</a></li>
       <li class="nav-item"><a href="#" class="nav-link">Followers</a></li>
       <li class="nav-item"><a href="#" class="nav-link">Likes</a></li>

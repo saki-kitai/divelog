@@ -1,16 +1,47 @@
-<ul class="list-unstyled">
+<div class="row">
+  <div class="col-sm-12">
+
   <% logs.each do |log| %>
-    <li class="media mb-3">
-      <img class="rounded-circle img-fluid" src= "<%= log.user.profile_picture.mini_thumb.url if log.user.profile_picture? %>" alt="">
-      <div class="media-body">
-        <div>
-          <%= link_to log.user.name, user_path(log.user) %> <span class="text-muted">posted at <%= log.created_at %></span>
-        </div>
-        <div>
-          <p><%= log.comment %></p>
-        </div>
-      </div>
-    </li>
+    <div class="row mb-3">
+        <div class="col-3"  style="text-align:center">
+            <div>
+              <a href="<%= user_path(log.user) %>">
+              <img class="image-fluid align-center rounded-circle" src= "<%= log.user.profile_picture.mini_thumb.url if log.user.profile_picture? %>" alt="">
+              </a>
+            </div>
+            <div>
+              <a href="<%= user_path(log.user) %>">@<%= log.user.name %></a>
+            </div>
+        </div><!--col-sm-1終わり-->
+        
+        <div class="col-9">
+          
+            <div class="row">
+              <div class="col-sm-12">
+                <img class="image-fluid" src="<%= log.image1.thumb.url if log.image1? %>">
+                <img class="image-fluid" src="<%= log.image2.thumb.url if log.image2? %>">
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-3">
+                <%= link_to 'show more', log_path(log) %><br>
+                <%= link_to 'Like', log_path(log) %>  
+              </div>
+              <div class="col-9">
+                <% unless log.comment.empty? %>
+                  <% comment = log.comment[0..20] %>
+                  <p><%= comment %>
+                  <br class="d-inline d-sm-none" /></p>
+                <% end %>
+              </div>
+            </div>
+            
+        </div><!-- col-9閉じる -->
+    </div><!--rowを閉じる-->
+    <hr>
   <% end %>
+  
   <%= paginate logs %>
-</ul>
+</div>
+</div>

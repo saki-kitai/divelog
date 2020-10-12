@@ -3,6 +3,7 @@ class LogsController < ApplicationController
   #before_action :要設定
   
   def show
+    @log = Log.find(params[:id])
   end
 
   def new

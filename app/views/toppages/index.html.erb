@@ -1,21 +1,27 @@
-<div class="center jumbotron">
-    <div class="text-center">
+<div class="container">
+
+<div class="row">
+        <div class="center jumbotron col-sm-12">
+        <div class="text-center">
         <h1>Welcome to Dive Log</h1>
             <% unless logged_in? %>
                 <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
             <% end %>
-    </div>
+        </div>
+        </div>
 </div>
 
 <div class="row">
-    <aside class="col-sm-4">
+    <aside class="col-sm-3 mb-2">
         free_area</br>
         ランキングか新規作成フォームかどちらか
         <% if logged_in? %>
         <%= link_to 'New Log!', newlog_user_path(@user), class: 'btn btn-lg btn-primary' %>
         <% end %>
     </aside>
-    <div class="col-sm-8">
+    <div class="col-sm-9">
         <%= render 'logs/logs_overview', logs: @logs %>
     </div>
+</div>
+
 </div>

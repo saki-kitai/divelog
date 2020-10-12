@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   
   before_action :require_user_logged_in, only: [:edit, :update, :destroy]
-  before_action :correct_user_check, only:[:edit, :update, :destroy]
+  before_action :correct_user_check, only:[:newlog, :edit, :update, :destroy]
   
   #全ユーザー情報を取得
   def index
@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: session[:user_id])
+    @user = User.find(params[:id])
     @logs = @user.logs.order(id: :desc).page(params[:page])
     
   end 
