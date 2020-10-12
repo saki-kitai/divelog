@@ -12,8 +12,11 @@ Rails.application.routes.draw do
         get :followings
         get :followers
         get :likes
+        get :map
       end
     end 
     
     resources :logs, only: [:new, :create, :edit, :update, :destroy, :show]
+    resources :relationships, only: [:create, :destroy]
+    resources :likes, only: [:create, :destroy]
 end

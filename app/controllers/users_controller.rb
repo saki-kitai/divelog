@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  before_action :require_user_logged_in, only: [:edit, :update, :destroy]
+  before_action :require_user_logged_in, only: [:edit, :update, :destroy, :followings, :followers, :likes]
   before_action :correct_user_check, only:[:newlog, :edit, :update, :destroy]
   
   #全ユーザー情報を取得
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @logs = @user.logs.order(id: :desc).page(params[:page])
-    
+    counts(@user)
   end 
 
   def new
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     
     if @user.save
       flash[:success] = 'Your account has been successfully created!'
-      redirect_to @user
+      redirect_to '/login'
     else
       flash.now[:danger] = 'Oops!'
       render :new
@@ -53,6 +53,18 @@ class UsersController < ApplicationController
   def newlog
     @user = current_user
     @log = @user.logs.build
+  end
+  
+  def followings
+    @user = User.find(params[:id])
+    @followings = @user.followings.page(params[:page])
+    counts(@user)
+  end
+  
+  def followers
+    @user = User.find(params[:id])
+    @followers = @user.followers.page(params[:page])
+    counts(@user)
   end
   
   private

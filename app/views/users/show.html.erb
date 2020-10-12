@@ -8,11 +8,13 @@
           <div align="center">
             <%= link_to 'Edit Profile', edit_user_path, class: 'btn btn-outline-secondary btn-sm' %>
           </div>
+        <% elsif %>
+            <% if logged_in? %>
+              <div align="center">
+              <%= render 'relationships/follow_button', user: @user %>
+              </div>
+            <% end %>
         <% else %>
-          <div align="center">
-            <%= link_to 'Follow', root_path , class: 'btn btn-primary btn-sm'%>
-            <%= link_to 'Unfollow', root_path , class: 'btn btn-outline-primary btn-sm'%>
-          </div>
         <% end %>        
       </div>
       
@@ -30,14 +32,14 @@
   </aside>
   <div class="col-sm-9">
     <ul class="nav nav-tabs nav-justified mb-3">
-      <li class="nav-item"><a href="<%= user_path(@user.id) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">Log<br><span class="badge badge-secondary"><%= @user.id %></span></a></li>
+      <li class="nav-item"><a href="<%= user_path(@user.id) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">Log<br><span class="badge badge-secondary"><%= @count_logs %></span></a></li>
       <% if correct_user? %>
         <li class="nav-item"><a href="<%= newlog_user_path(@user.id) %>" class="nav-link <%= 'active' if current_page?(newlog_user_path(@user)) %>">New Log</a></li>
       <% end %>
-      <li class="nav-item"><a href="<%= followings_user_path(@user.id) %>" class="nav-link <%= 'active' if current_page?(followings_user_path(@user)) %>">Followings<br><span class="badge badge-secondary"><%= @user.id %></span></a></li>
-      <li class="nav-item"><a href="<%= followers_user_path(@user.id) %>" class="nav-link <%= 'active' if current_page?(followers_user_path(@user)) %>">Followers<br><span class="badge badge-secondary"><%= @user.id %></span></a></li>
+      <li class="nav-item"><a href="<%= followings_user_path(@user.id) %>" class="nav-link <%= 'active' if current_page?(followings_user_path(@user)) %>">Followings<br><span class="badge badge-secondary"><%= @count_followings %></span></a></li>
+      <li class="nav-item"><a href="<%= followers_user_path(@user.id) %>" class="nav-link <%= 'active' if current_page?(followers_user_path(@user)) %>">Followers<br><span class="badge badge-secondary"><%= @count_followers %></span></a></li>
       <li class="nav-item"><a href="<%= likes_user_path(@user.id) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>">Likes<br><span class="badge badge-secondary"><%= @user.id %></span></a></li>
-      <li class="nav-item"><a href="#" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">Map</a></li>
+      <li class="nav-item"><a href="<%= map_user_path(@user.id) %>" class="nav-link <%= 'active' if current_page?(map_user_path(@user)) %>">Map</a></li>
     </ul>
     <%= render 'logs/logs_overview', logs: @logs %>
   </div>

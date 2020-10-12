@@ -10,8 +10,7 @@
           </div>
         <% else %>
           <div align="center">
-            <%= link_to 'Follow', root_path , class: 'btn btn-primary btn-sm'%>
-            <%= link_to 'Unfollow', root_path , class: 'btn btn-outline-primary btn-sm'%>
+            <%= render 'relationships/follow_button', user: @user %>
           </div>
         <% end %>        
       </div>
@@ -39,6 +38,6 @@
       <li class="nav-item"><a href="<%= likes_user_path(@user.id) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>">Likes<br><span class="badge badge-secondary"><%= @user.id %></span></a></li>
       <li class="nav-item"><a href="<%= map_user_path(@user.id) %>" class="nav-link <%= 'active' if current_page?(map_user_path(@user)) %>">Map</a></li>
     </ul>
-   <%= render 'logs/form', log: @log %>
-  </div>　
+    <%= render 'users', users: @followers %>
+  </div>
 </div>
