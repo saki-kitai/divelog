@@ -1,8 +1,151 @@
-<%= link_to 'Back', :back %>
+<div class="mb-2 ml-3">
+    <%= link_to 'Back', :back, class: 'btn btn-outline-secondary rounded-pill '%>
+</div>
+<div class="container">
+<div class="row">
+  <aside class="col-sm-3">
+    <div class="card">
+      <div class="card-header">
+        <img class="rounded-circle img-fluid mb-2" src= "<%=@user.profile_picture.thumb.url if @user.profile_picture? %>" alt="">
+        <h6 class="card-title" align="center">@<%= @user.name %></h6>
+        <% if @user == current_user %>
+          <div align="center">
+            <%= link_to 'Edit Profile', edit_user_path, class: 'btn btn-outline-secondary btn-sm' %>
+          </div>
+        <% else %>
+          <div align="center">
+            <%= link_to 'Follow', root_path , class: 'btn btn-primary btn-sm'%>
+            <%= link_to 'Unfollow', root_path , class: 'btn btn-outline-primary btn-sm'%>
+          </div>
+        <% end %>        
+      </div>
+      
+      <div class="card-body">
+          <div class="mt-2" align="center">
+            <p>
+            Total: <%= "30" %> Dives</br>
+            Following: <%= "30" %></br>
+            Followers: <%= "30" %> </br>
+            </p>
+          </div>
+      </div>
+      
+    </div>
+  </aside>
+  
+  <style>
+      table, tr, th, td {border: none;}
+      table {table-layout: fixed; width: 90%;}
+      th {width: 30%; text-align:right;}
+  </style>
 
-<h1>ログ詳細ページ（作成中）</h1>
-<%= @log.id %>
-<%= @log.comment %>
+  <div class="col-sm-9">
+    <div class="row">
+        <div class="col-sm-12 mb-2">
+            <img class="image-fluid" src="<%= @log.image1.thumb.url if @log.image1? %>">
+            <img class="image-fluid" src="<%= @log.image2.thumb.url if @log.image2? %>">
+        </div>
+    </div>  
+      
+    <table class="table">
+        <tr>
+            <th >Date:</th>
+            <td><%= @log.id %></td>
+        </tr>
+        <tr>
+            <th>Weather:</th>
+            <td><%= @log.weather %></td>
+        </tr>
+        <tr>
+            <th>Wind:</th>
+            <td><%= @log.wind %></td>
+        </tr>
+        <tr>
+            <th>Temperature:</th>
+            <td><%= @log.temperature %></td>
+        </tr>
+        <tr>
+            <th>Water Temperature:</th>
+            <td><%= @log.water_temperature %></td>
+        </tr>
+        <tr>
+            <th>Start Time:</th>
+            <td><%= @log.start_time %></td>
+        </tr>
+        <tr>
+            <th>End Time:</th>
+            <td><%= @log.end_time %></td>
+        </tr>
+        <tr>
+            <th>Total Time:</th>
+            <td><%= @log.total_time %></td>
+        </tr>
+        <tr>
+            <th>Country:</th>
+            <td><%= @log.country %></td>
+        </tr>
+        <tr>
+            <th>Area:</th>
+            <td><%= @log.area %></td>
+        </tr>
+        <tr>
+            <th>Point:</th>
+            <td><%= @log.point %></td>
+        </tr>
+        <tr>
+            <th>Entry Type:</th>
+            <td><%= @log.entry_type %></td>
+        </tr><tr>
+            <th>Weight:</th>
+            <td><%= @log.weight %>kg</td>
+        </tr>
+        <tr>
+            <th>Buddy:</th>
+            <td><%= @log.buddy %></td>
+        </tr>
+        <tr>
+            <th>Visibility:</th>
+            <td><%= @log.visibility %></td>
+        </tr>
+        <tr>
+            <th>Max Depth:</th>
+            <td><%= @log.max_depth %>m</td>
+        </tr>
+        <tr>
+            <th>Average Depth:</th>
+            <td><%= @log.avg_depth %></td>
+        </tr>
+        <tr>
+            <th>Start Bar:</th>
+            <td><%= @log.start_bar %></td>
+        </tr>
+        <tr>
+            <th>End Bar:</th>
+            <td><%= @log.end_bar %></td>
+        </tr>
+        <tr>
+            <th>Air Consumption:</th>
+            <td><%= @log.bar_used %></td>
+        </tr>
+        <tr>
+            <th>Comment:</th>
+            <td style="word-wrap:break-word"><%= @log.comment %></td>
+        </tr>
+    </table>
 
-<%= link_to 'Edit', root_path %>
-<%= link_to 'Delete', root_path %>
+    <% if @log.user == current_user %>
+        <div class="mb-5">
+            <%= link_to 'Edit', edit_log_path(@log) , class: 'btn btn-outline-secondary btn-block rounded-pill '%>
+            <%= link_to "Delete", @log, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-outline-danger btn-block rounded-pill' %>
+        </div>
+    <% end %>
+    
+    <div class="mb-5">
+        <%= link_to 'Back', :back, class: 'btn btn-outline-secondary btn-block rounded-pill ' %>
+    </div>
+  
+  </div>
+  
+  
+</div>
+</div>

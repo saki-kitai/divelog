@@ -1,36 +1,44 @@
 <div class="row">
-  <aside class="col-sm-4">
+  <aside class="col-sm-3">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><%= link_to "@#{@user.name}", user_path %></h3>
-      </div>
-      <div class="card-body">
-          <img class="rounded-circle img-fluid" src= "<%=@user.profile_picture.thumb.url if @user.profile_picture? %>" alt="">
+        <img class="rounded-circle img-fluid mb-2" src= "<%=@user.profile_picture.thumb.url if @user.profile_picture? %>" alt="">
+        <h6 class="card-title" align="center">@<%= @user.name %></h6>
+        <% if correct_user? %>
           <div align="center">
-          <p>
+            <%= link_to 'Edit Profile', edit_user_path, class: 'btn btn-outline-secondary btn-sm' %>
+          </div>
+        <% else %>
+          <div align="center">
+            <%= link_to 'Follow', root_path , class: 'btn btn-primary btn-sm'%>
+            <%= link_to 'Unfollow', root_path , class: 'btn btn-outline-primary btn-sm'%>
+          </div>
+        <% end %>        
+      </div>
+      
+      <div class="card-body">
+          <div class="mt-2" align="center">
+            <p>
             Total: <%= "30" %> Dives</br>
             Following: <%= "30" %></br>
             Followers: <%= "30" %> </br>
-          </p>
+            </p>
           </div>
-          <% if correct_user? %>
-            <div align="right">
-              <%= link_to 'Edit Profile', edit_user_path, class: 'btn btn-primary' %>
-            </div>
-          <% else %>
-          <% end %>
       </div>
+      
     </div>
   </aside>
-  <div class="col-sm-8">
+  <div class="col-sm-9">
     <ul class="nav nav-tabs nav-justified mb-3">
-      <li class="nav-item"><a href="<%= user_path(@user.id) %>" class="nav-link">Log</a></li>
-      <li class="nav-item"><a href="<%= newlog_user_path(current_user) %>" class="nav-link">New Log</a></li>
-      <li class="nav-item"><a href="#" class="nav-link">Followings</a></li>
-      <li class="nav-item"><a href="#" class="nav-link">Followers</a></li>
-      <li class="nav-item"><a href="#" class="nav-link">Likes</a></li>
-      <li class="nav-item"><a href="#" class="nav-link">Map</a></li>
+      <li class="nav-item"><a href="<%= user_path(@user.id) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">Log<br><span class="badge badge-secondary"><%= @user.id %></span></a></li>
+      <% if correct_user? %>
+        <li class="nav-item"><a href="<%= newlog_user_path(@user.id) %>" class="nav-link <%= 'active' if current_page?(newlog_user_path(@user)) %>">New Log</a></li>
+      <% end %>
+      <li class="nav-item"><a href="<%= followings_user_path(@user.id) %>" class="nav-link <%= 'active' if current_page?(followings_user_path(@user)) %>">Followings<br><span class="badge badge-secondary"><%= @user.id %></span></a></li>
+      <li class="nav-item"><a href="<%= followers_user_path(@user.id) %>" class="nav-link <%= 'active' if current_page?(followers_user_path(@user)) %>">Followers<br><span class="badge badge-secondary"><%= @user.id %></span></a></li>
+      <li class="nav-item"><a href="<%= likes_user_path(@user.id) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>">Likes<br><span class="badge badge-secondary"><%= @user.id %></span></a></li>
+      <li class="nav-item"><a href="#" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">Map</a></li>
     </ul>
    <%= render 'logs/form', log: @log %>
-  </div>
+  </div>　
 </div>
