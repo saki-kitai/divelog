@@ -11,15 +11,24 @@
         </div>
 </div>
 
+<div class="row mb-2">
+    <div style="display:inline-block; margin-left:auto; margin-right:auto;">
+        <% if logged_in? %>
+        <%= link_to newlog_user_path(@user), class: 'btn btn-lg btn-outline-primary' do %>
+          New Log <i class="fas fa-pencil-alt"></i>
+        <% end %>
+    <% end %>
+    </div>
+</div>
+
+
+
 <div class="row">
     <aside class="col-sm-3 mb-2">
-        free_area</br>
-        ランキングか新規作成フォームかどちらか
-        <% if logged_in? %>
-        <%= link_to 'New Log!', newlog_user_path(@user), class: 'btn btn-lg btn-primary' %>
-        <% end %>
+
     </aside>
     <div class="col-sm-9">
+
         <%= render 'logs/logs_overview', logs: @logs %>
     </div>
 </div>
