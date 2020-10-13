@@ -1,3 +1,6 @@
+
+
+
 <div class="row">
   <div class="col-sm-12">
 
@@ -6,11 +9,11 @@
         <div class="col-3"  style="text-align:center">
             <div>
               <a href="<%= user_path(log.user) %>">
-              <img class="image-fluid align-center rounded-circle" style="border-style:solid; border-color:lightblue" src= "<%= log.user.profile_picture.mini_thumb.url if log.user.profile_picture? %>" alt="" border="1px">
+              <img class="img-fluid align-center rounded-circle" style="border-style:solid; border-color:lightblue" src= "<%= log.user.profile_picture.mini_thumb.url if log.user.profile_picture? %>" alt="" border="1px">
               </a>
             </div>
             <div>
-              <a href="<%= user_path(log.user) %>">@<%= log.user.name %></a>
+              <a class="if_sp_delete" href="<%= user_path(log.user) %>">@<%= log.user.name %></a>
             </div>
         </div>
         
@@ -18,8 +21,8 @@
           
             <div class="row mb-1">
               <div class="col-sm-12">
-                <img class="image-fluid" src="<%= log.image1.thumb.url if log.image1? %>">
-                <img class="image-fluid" src="<%= log.image2.thumb.url if log.image2? %>">
+                <img class="image-fluid all_devices" src="<%= log.image1.thumb.url if log.image1? %>">
+                <img class="image-fluid pc_only" src="<%= log.image2.thumb.url if log.image2? %>">
               </div>
             </div>
             
