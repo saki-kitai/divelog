@@ -18,11 +18,15 @@
 //= require jquery_ujs
 
 
-$(document).ready(() => {
-    initMap();
+document.addEventListener("turbolinks:load", function() {
+    initMap()
 });
 
-function initMap() {
+//$(document).ready(() => {
+//    initMap();
+//});
+
+    function initMap() {
     // ロードした時のデータをここにいれる
     // (-28.882304674138656, 144.139703125)を「,」で正規表現で区切って、最初と最後のカッコもreplaceをする
     var myLatlng = { lat: -25.363, lng: 131.044 };
