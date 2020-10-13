@@ -13,15 +13,23 @@
     <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <!--jquery追加  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
+    
+    <!--  google mapのload  -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXyNa-DbB7Qo2Bj95y1cytsZAp47UXQ50"></script>
+    <!--AIzaSyCXyNa-DbB7Qo2Bj95y1cytsZAp47UXQ50-->
   </head>
 
   <body>
     <%= render 'layouts/navbar' %>
     <div class="container">
       <%= render 'layouts/flash_messages' %>
+      <div id="map" style="width: 100%; height: 500px;"></div>
       <%= yield %>
     </div>
     <%= render 'layouts/footer' %>

@@ -16,3 +16,36 @@
 //= require_tree .
 //= require jquery
 //= require jquery_ujs
+
+
+$(document).ready(() => {
+    initMap();
+});
+
+function initMap() {
+    // ロードした時のデータをここにいれる
+    // (-28.882304674138656, 144.139703125)を「,」で正規表現で区切って、最初と最後のカッコもreplaceをする
+    var myLatlng = { lat: -25.363, lng: 131.044 };
+
+    var map = new google.maps.Map(document.getElementById('map'), { zoom: 4, center: myLatlng });
+
+    // Create the initial InfoWindow.
+    var infoWindow = new google.maps.InfoWindow({ content: 'Click the map to get Lat/Lng!', position: myLatlng });
+    
+    infoWindow.open(map);
+
+    // ここだけ触ること、それ以外触らない！！
+    map.addListener('click', function(mapsMouseEvent) {
+      // Close the current InfoWindow.
+      infoWindow.close();
+      console.log(mapsMouseEvent.latLng.toString());
+    
+      // ここにformのidをいれることでクリックしたときにデータがリアルタイムで適用される
+      $('#log_wind').val(mapsMouseEvent.latLng.toString());
+
+      // Create a new InfoWindow.
+      infoWindow = new google.maps.InfoWindow({ position: mapsMouseEvent.latLng });
+      infoWindow.setContent(mapsMouseEvent.latLng.toString());
+      infoWindow.open(map);  
+    });
+}
