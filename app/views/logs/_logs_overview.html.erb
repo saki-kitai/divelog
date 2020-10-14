@@ -21,9 +21,14 @@
           
             <div class="row mb-1">
               <div class="col-sm-12">
-                <img class="image-fluid all_devices" src="<%= log.image1.thumb.url if log.image1? %>">
-                <img class="image-fluid pc_only" src="<%= log.image2.thumb.url if log.image2? %>">
+                <div class="only_sp">@<%= log.user.name %></div>
               </div>
+            </div>
+              
+            <div class="row mb-2" style="display:flex;">
+                <img class="img-fluid all_devices" src="<%= log.image1.thumb.url if log.image1? %>">
+                <img class="image-fluid pc_only" src="<%= log.image2.thumb.url if log.image2? %>">
+                <div class="all_devices" id="map" style="height: auto;"></div>
             </div>
             
             <div class="row">
@@ -31,7 +36,7 @@
                 <%= link_to log_path(log), class: 'btn btn-outline-danger rounded-pill' do %>
                   <i class="fas fa-heart"></i>
                 <% end %><br>
-                <%= link_to '>>show more', log_path(log), :style=>"color:grey;" %>
+                <%= link_to '>>more', log_path(log), :style=>"color:grey;" %>
               </div>
               <div class="col-9">
                 <% unless log.comment.empty? %>
@@ -46,7 +51,7 @@
             </div>
             
             <% if log.user == current_user %>
-              <div class="row" style="text-align:right">
+              <div class="row" style="text-align:right;">
                 <div class="col-sm-12">
                 <%= link_to 'Edit', edit_log_path(log) , class: 'btn btn-outline-secondary btn-sm'%>
                 <%= link_to "Delete", log, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-outline-danger btn-sm' %>

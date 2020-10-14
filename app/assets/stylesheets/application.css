@@ -28,3 +28,10 @@
 @media only screen and (max-width: 500px) {
 .if_sp_delete { display: none !important; }
 }
+
+.only_sp {display: none;}
+
+/*スマホの場合だけ非表示 */
+@media only screen and (max-width: 500px) {
+.only_sp { display: block !important; }
+}
