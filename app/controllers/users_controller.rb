@@ -53,6 +53,7 @@ class UsersController < ApplicationController
   def newlog
     @user = current_user
     @log = @user.logs.build
+    counts(@user)
   end
   
   def followings
@@ -66,6 +67,12 @@ class UsersController < ApplicationController
     @followers = @user.followers.page(params[:page])
     counts(@user)
   end
+  
+  def likes
+    @user = User.find(params[:id])
+    @likes = @user.liked_logs.page(params[:page])
+    counts(@user)
+  end 
   
   private
   def user_params

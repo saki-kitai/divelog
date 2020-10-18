@@ -28,14 +28,13 @@
             <div class="row mb-2" style="display:flex;">
                 <img class="img-fluid all_devices" src="<%= log.image1.thumb.url if log.image1? %>">
                 <img class="image-fluid pc_only" src="<%= log.image2.thumb.url if log.image2? %>">
-                <div class="all_devices" id="map" style="height: auto;"></div>
+                <div class="all_devices map" style="height: auto;"></div>
+                
             </div>
             
             <div class="row">
               <div class="col-3">
-                <%= link_to log_path(log), class: 'btn btn-outline-danger rounded-pill' do %>
-                  <i class="fas fa-heart"></i>
-                <% end %><br>
+                <%= render 'likes/like_button', log: log %>
                 <%= link_to '>>more', log_path(log), :style=>"color:grey;" %>
               </div>
               <div class="col-9">

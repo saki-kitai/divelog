@@ -36,7 +36,7 @@
       <% end %>
       <li class="nav-item"><a href="<%= followings_user_path(@user.id) %>" class="nav-link <%= 'active' if current_page?(followings_user_path(@user)) %>">Followings<br><span class="badge badge-secondary"><%= @count_followings %></span></a></li>
       <li class="nav-item"><a href="<%= followers_user_path(@user.id) %>" class="nav-link <%= 'active' if current_page?(followers_user_path(@user)) %>">Followers<br><span class="badge badge-secondary"><%= @count_followers %></span></a></li>
-      <li class="nav-item"><a href="<%= likes_user_path(@user.id) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>">Likes<br><span class="badge badge-secondary"><%= @user.id %></span></a></li>
+      <li class="nav-item"><a href="<%= likes_user_path(@user.id) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>">Likes<br><span class="badge badge-secondary"><%= @count_likes %></span></a></li>
       <li class="nav-item"><a href="<%= map_user_path(@user.id) %>" class="nav-link <%= 'active' if current_page?(map_user_path(@user)) %>">Map</a></li>
     </ul>
    <%= render 'logs/form', log: @log %>

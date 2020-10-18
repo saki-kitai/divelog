@@ -8,13 +8,10 @@
           <div align="center">
             <%= link_to 'Edit Profile', edit_user_path, class: 'btn btn-outline-secondary btn-sm' %>
           </div>
-        <% elsif %>
-            <% if logged_in? %>
-              <div align="center">
-              <%= render 'relationships/follow_button', user: @user %>
-              </div>
-            <% end %>
         <% else %>
+          <div align="center">
+            <%= render 'relationships/follow_button', user: @user %>
+          </div>
         <% end %>        
       </div>
       
@@ -41,6 +38,6 @@
       <li class="nav-item"><a href="<%= likes_user_path(@user.id) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>">Likes<br><span class="badge badge-secondary"><%= @count_likes %></span></a></li>
       <li class="nav-item"><a href="<%= map_user_path(@user.id) %>" class="nav-link <%= 'active' if current_page?(map_user_path(@user)) %>">Map</a></li>
     </ul>
-    <%= render 'logs/logs_overview', logs: @logs %>
+    <%= render 'logs/logs_overview', logs: @likes %>
   </div>
 </div>

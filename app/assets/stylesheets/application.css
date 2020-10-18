@@ -15,23 +15,61 @@
  */
 
 /*タブレット（縦）より大きい画面の場合*/
-.all_devices { display: inline-block; width: 32% !important; }
-.pc_only { display: inline-block; width: 32% !important; }
+
+.all_devices {
+    display: inline-block;
+    width: 32% !important;
+}
+
+.pc_only {
+    display: inline-block;
+    width: 32% !important;
+}
 
 /*タブレット（縦）より小さい画面の場合*/
+
 @media only screen and (max-width: 768px) {
-.all_devices { display: inline-block; width: 48% !important; }
-.pc_only { display:none !important; }
+    .all_devices {
+        display: inline-block;
+        width: 48% !important;
+    }
+    .pc_only {
+        display: none !important;
+    }
 }
 
 /*スマホの場合だけ非表示 */
+
 @media only screen and (max-width: 500px) {
-.if_sp_delete { display: none !important; }
+    .if_sp_delete {
+        display: none !important;
+    }
 }
 
-.only_sp {display: none;}
+.only_sp {
+    display: none;
+}
 
 /*スマホの場合だけ非表示 */
+
 @media only screen and (max-width: 500px) {
-.only_sp { display: block !important; }
+    .only_sp {
+        display: block !important;
+    }
+}
+
+.like-btn {
+    width: 25px;
+    height: 30px;
+    font-size: 25px;
+    color: #808080;
+    margin-left: 20px;
+}
+
+.unlike-btn {
+    width: 25px;
+    height: 30px;
+    font-size: 25px;
+    color: #e54747;
+    margin-left: 20px;
 }
