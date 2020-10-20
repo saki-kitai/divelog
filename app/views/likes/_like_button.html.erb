@@ -1,9 +1,9 @@
-<% if !current_user.like?(log) %>
-  <%= link_to likes_path(log_id: log.id), method: :post do %>
-    <i class="far fa-heart like-btn" ></i>
-  <% end %>
-<% else %>
+<% if current_user.like?(log) %>
   <%= link_to like_path(log.id), method: :delete do %>
     <i class="fas fa-heart unlike-btn"></i>
+  <% end %>
+<% else %>
+    <%= link_to likes_path(log_id: log.id), method: :post do %>
+    <i class="far fa-heart like-btn" ></i>
   <% end %>
 <% end %>
