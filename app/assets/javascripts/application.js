@@ -42,11 +42,10 @@ function initMap() {
         //var myLatlng = { lat: el.dataset.lat, lng: el.dataset.lng };
 
         var map = new google.maps.Map(el, {
-            zoom: 4,
+            zoom: 2,
             center: myLatlng,
             zoomControl: false,
             streetViewControl: false
-
         });
 
         // Create the initial InfoWindow.
@@ -61,7 +60,7 @@ function initMap() {
             console.log(mapsMouseEvent.latLng.toString());
 
             // ここにformのidをいれることでクリックしたときにデータがリアルタイムで適用される
-            $('#log_wind').val(mapsMouseEvent.latLng.toString());
+            $('#log_Wind').val(mapsMouseEvent.latLng.toString());
 
             // Create a new InfoWindow.
             infoWindow = new google.maps.InfoWindow({ position: mapsMouseEvent.latLng });

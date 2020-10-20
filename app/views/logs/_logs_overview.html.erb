@@ -26,9 +26,14 @@
             </div>
               
             <div class="row mb-2" style="display:flex;">
-                <img class="img-fluid all_devices" src="<%= log.image1.thumb.url if log.image1? %>">
-                <img class="image-fluid pc_only" src="<%= log.image2.thumb.url if log.image2? %>">
+              <% if log.image1.blank? %>
+                <div class="map" style="width: 95%; height:150px;"></div>
+              <% else %>
                 <div class="all_devices map" style="height: auto;"></div>
+              <% end %>
+              <img class="img-fluid all_devices" src="<%= log.image1.thumb.url if log.image1? %>">
+              <img class="image-fluid pc_only" src="<%= log.image2.thumb.url if log.image2? %>">
+                
                 
             </div>
             

@@ -44,7 +44,7 @@ class LogsController < ApplicationController
   private
   
   def log_params
-    params.require(:log).permit(:date, :weather, :wind, :temperature, :water_temperature, :start_time, :end_time, :total_time, :country, :area, :point, :entry_type, :weight, :buddy, :visibility, :current, :max_depth, :avg_depth, :start_bar, :end_bar, :bar_used, :image1, :image2, :comment)
+    params.require(:log).permit(:date, :weather, :wind, :temperature, :water_temperature, :start_time, :end_time, :total_time, :country, :area, :point, :entry_type, :weight, :buddy, :visibility, :current, :max_depth, :avg_depth, :start_bar, :end_bar, :bar_used, :image1, :image2, :comment, :latlng)
   end 
   
   def correct_user_of_log
